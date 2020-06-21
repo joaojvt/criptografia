@@ -8,79 +8,10 @@ public class CrifraDeCesar {
     List<String> characters = new ArrayList<String>();
 
     public CrifraDeCesar() {
-        characters.add("a");
-        characters.add("b");
-        characters.add("c");
-        characters.add("d");
-        characters.add("e");
-        characters.add("f");
-        characters.add("g");
-        characters.add("h");
-        characters.add("i");
-        characters.add("j");
-        characters.add("k");
-        characters.add("l");
-        characters.add("m");
-        characters.add("n");
-        characters.add("o");
-        characters.add("p");
-        characters.add("q");
-        characters.add("r");
-        characters.add("s");
-        characters.add("t");
-        characters.add("u");
-        characters.add("b");
-        characters.add("x");
-        characters.add("y");
-        characters.add("w");
-        characters.add("z");
-        characters.add("A");
-        characters.add("B");
-        characters.add("C");
-        characters.add("D");
-        characters.add("E");
-        characters.add("F");
-        characters.add("G");
-        characters.add("H");
-        characters.add("I");
-        characters.add("J");
-        characters.add("K");
-        characters.add("L");
-        characters.add("M");
-        characters.add("N");
-        characters.add("O");
-        characters.add("P");
-        characters.add("Q");
-        characters.add("R");
-        characters.add("S");
-        characters.add("T");
-        characters.add("U");
-        characters.add("V");
-        characters.add("X");
-        characters.add("Y");
-        characters.add("W");
-        characters.add("Z");
-        characters.add("0");
-        characters.add("1");
-        characters.add("2");
-        characters.add("3");
-        characters.add("4");
-        characters.add("5");
-        characters.add("6");
-        characters.add("7");
-        characters.add("8");
-        characters.add("9");
-        characters.add(",");
-        characters.add(".");
-        characters.add(";");
-        characters.add(":");
-        characters.add("/");
-        characters.add("?");
-        characters.add("!");
-        characters.add("-");
-        characters.add("=");
-        characters.add("+");
-        characters.add("*");
+        characters = Arrays.asList("a","b","c","d","e","f","g","h","i","j","k"
+                ,"l","m","n","o","p","q","r","s","t","u","v","x","w","y","z","A","B","C","D","E","F"
+                ,"G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","X","W","Y","Z","0"
+                ,"1","2","3","4","5","6","7","8","9",",",".",";",":","/","?","!","-","=","+","*"," ");
     }
 
     public static String removeAccents(String text) {
@@ -104,6 +35,7 @@ public class CrifraDeCesar {
 
     private String encryptCharacter(String character, Integer dispalcement) {
         if (character.equals(" ")) return character;
+        if (characters.indexOf(character) == -1) return " ";
         int characterDisplacementPosition = characters.indexOf(character) + dispalcement;
         characterDisplacementPosition = characterDisplacementPosition >= characters.size() ? characterDisplacementPosition - characters.size() : characterDisplacementPosition;
         return characters.get(characterDisplacementPosition);
@@ -123,6 +55,7 @@ public class CrifraDeCesar {
 
     private String uncryptCharacter(String character, Integer dispalcement) {
         if (character.equals(" ")) return character;
+        if (characters.indexOf(character) == -1) return " ";
         int characterDisplacementPosition = characters.indexOf(character) - dispalcement;
         characterDisplacementPosition = characterDisplacementPosition < 0 ? characterDisplacementPosition + characters.size() : characterDisplacementPosition;
         return characters.get(characterDisplacementPosition);
