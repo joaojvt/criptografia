@@ -3,6 +3,7 @@
 .out
 *.class
 *.txt
+*.iml
 
 # User-specific stuff
 .idea/**/workspace.xml
