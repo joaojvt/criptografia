@@ -164,11 +164,12 @@ public class Principal {
         System.out.println("Digite o valor do parametro de deslocamento");
         int displacementValue = read.nextInt();
 
-        CrifraDeCesar cifra = new CrifraDeCesar();
+        CifraDeCesar cifra = new CifraDeCesar();
         String encryptedText = cifra.encrypt(fileText, displacementValue);
 
         nameFile = nameFile.split("\\.")[0];
         saveFile(encryptedText, nameFile + "-encrypted.txt");
+        System.exit(0);
     }
 
     public void cesarCipherUncrypt(){
@@ -186,28 +187,63 @@ public class Principal {
             if (fileText != null) isRunning = false;
         }
 
-        CrifraDeCesar cifra = new CrifraDeCesar();
+        CifraDeCesar cifra = new CifraDeCesar();
         String uncryptedText = cifra.uncrypt(fileText);
 
         nameFile = nameFile.split("-")[0];
         saveFile(uncryptedText, nameFile + "-uncrypted.txt");
+        System.exit(0);
     }
 
     private void poiligraphyEncrypt() {
-
+        Scanner read = new Scanner(System.in);
         String fileText = null;
+        String nameFile = null;
 
+        System.out.println("Digite o nome do arquivo:");
+        System.out.println("Ditite \"0\" para sair");
+        boolean isRunning = true;
+        while (isRunning) {
+            nameFile = read.nextLine();
+            if (nameFile.equals("0")) System.exit(0);
+            fileText = readFile(nameFile);
+            if (fileText != null) isRunning = false;
+        }
+
+        CifraPolialfabetica cifra = new CifraPolialfabetica();
+        String encryptedText = cifra.encrypt(fileText);
+
+        nameFile = nameFile.split("\\.")[0];
+        saveFile(encryptedText, nameFile + "-encrypted.txt");
+        System.exit(0);
     }
     private void poiligraphyUncrypt() {
-
+        Scanner read = new Scanner(System.in);
         String fileText = null;
+        String nameFile = null;
 
+        System.out.println("Digite o nome do arquivo:");
+        System.out.println("Ditite \"0\" para sair");
+        boolean isRunning = true;
+        while (isRunning) {
+            nameFile = read.nextLine();
+            if (nameFile.equals("0")) System.exit(0);
+            fileText = readFile(nameFile);
+            if (fileText != null) isRunning = false;
+        }
+
+        CifraPolialfabetica cifra = new CifraPolialfabetica();
+        String uncryptedText = cifra.uncrypt(fileText);
+
+        nameFile = nameFile.split("-")[0];
+        saveFile(uncryptedText, nameFile + "-uncrypted.txt");
+        System.exit(0);
     }
 
-    private void hybridUncrypt() {
-
-    }
     private void hybridEncrypt() {
+
+    }
+    private void hybridUncrypt() {
 
     }
 }
